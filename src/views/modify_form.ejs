@@ -1,0 +1,22 @@
+<script src="/static/js/image_read.js"></script>      
+</script>
+
+<h3>수정페이지</h3>
+<form action="/file/modify" method="post"
+             enctype="multipart/form-data">
+    
+    <input type="hidden" name="originFileName" value="<%=fileName%>">
+    <img src="/file/download/<%= fileName %>" id="preview" 
+        width="100" height="100" alt="이미지가 없습니다"> <br>
+
+    <input type="file" name="newFileName" onchange="readURL(this)"> <br>
+    <input type="submit" value="전송">
+
+</form>
+
+enctype="multipart/form-data" : 파일을 전송하는 방식 <br>
+onchange: 변화..? <br>
+this: 태그 자기 자신 자체르 얘기함 <br>
+
+<hr>
+<a href="/file/list">파일 목록 보기</a>

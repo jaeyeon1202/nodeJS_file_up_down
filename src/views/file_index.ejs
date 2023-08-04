@@ -1,0 +1,33 @@
+<script>
+    function readURL(input){
+        //파일에 대한 정보
+        const file = input.files[0];
+        console.log(file);
+        if(file != ""){ //파일에 값이 있다면 
+            const reader = new FileReader(); //파일을 읽어오는 기능
+            reader.readAsDataURL(file); //파일에 대한 정보를 넣는것
+            reader.onload =(e) => { //실행시켜주겠다 , e:이벤트 객체
+                console.log(e.target.result);
+                document.querySelector("#preview").src = e.target.result;
+            }
+        }
+    }
+</script>
+
+
+<form action="/file/upload" method="post" enctype="multipart/form-data">
+    <input type="text" name="title" > <br>
+
+    <img src="#" id="preview" width="100" height="100" alt="이미지가 없습니다"> <br>
+
+    <input type="file" name="file_name" onchange="readURL(this)"> <br>
+    <input type="submit" value="전송">
+
+</form>
+
+enctype="multipart/form-data" : 파일을 전송하는 방식 <br>
+onchange: 변화..? <br>
+this: 태그 자기 자신 자체르 얘기함 <br>
+
+<hr>
+<a href="/file/list">파일 목록 보기</a>
